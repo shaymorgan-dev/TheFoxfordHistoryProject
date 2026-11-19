@@ -1,0 +1,1969 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Три цвета правды: Гражданская война в России</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       ФОН И БАЗА
+       ========================================================== */
+    :root {
+      --bg-photo: url('https://cs8.pikabu.ru/post_img/2017/02/16/9/og_og_14872575182924953.jpg');
+
+      --gold: #d4a44c;
+      --gold-soft: #b8923f;
+      --red: #a52a2a;
+      --red-deep: #8b1a1a;
+      --blue: #0039a6;
+      --tricolor-red: #d52b1e;
+      --white: #f0e8d8;
+      --bg-card: #211a12;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Source Sans Pro', 'Segoe UI', Tahoma, sans-serif;
+      color: #e8dcc8;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 36px 20px;
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+
+      background-color: #0a0805;
+        background-image:
+    linear-gradient(180deg,
+      rgba(0, 0, 0, 0.55) 0%,
+      transparent 25%,
+      transparent 72%,
+      rgba(0, 0, 0, 0.32) 100%),
+    radial-gradient(ellipse at center,
+      rgba(8, 6, 4, 0.45) 0%,
+      rgba(8, 6, 4, 0.65) 60%,
+      rgba(0, 0, 0, 0.82) 100%),
+    var(--bg-photo),
+    linear-gradient(180deg, #3a2814 0%, #1a1208 50%, #070504 100%);
+      background-size: cover, cover, cover, auto;
+      background-position: center, center, center, center;
+      background-attachment: fixed, fixed, fixed, fixed;
+      background-repeat: no-repeat;
+      background-blend-mode: normal, multiply, normal, normal;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.28;
+      mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/></svg>");
+    }
+
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      opacity: 0.35;
+      background-image:
+        linear-gradient(90deg, transparent 49.7%, rgba(240, 232, 216, 0.06) 49.9%, transparent 50.1%),
+        linear-gradient(90deg, transparent 12%, rgba(240, 232, 216, 0.04) 12.1%, transparent 12.2%),
+        linear-gradient(90deg, transparent 83%, rgba(240, 232, 216, 0.05) 83.1%, transparent 83.2%),
+        radial-gradient(ellipse at 30% 20%, rgba(212, 164, 76, 0.03) 0%, transparent 40%);
+      mix-blend-mode: screen;
+    }
+
+    #app {
+      max-width: 880px;
+      width: 100%;
+      background:
+        linear-gradient(180deg, rgba(212, 164, 76, 0.025) 0%, transparent 25%),
+        linear-gradient(180deg, #241c14 0%, #1c160e 100%);
+      border: 1px solid #4a3a26;
+      border-radius: 6px;
+      padding: 48px 48px 40px;
+      box-shadow:
+        0 0 0 1px rgba(201, 164, 76, 0.06),
+        0 24px 80px rgba(0, 0, 0, 0.9),
+        inset 0 1px 0 rgba(201, 164, 76, 0.08);
+      position: relative;
+      z-index: 1;
+      animation: fadeIn 0.55s ease both;
+    }
+
+    #app::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 40px;
+      right: 40px;
+      height: 3px;
+      border-radius: 2px;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        #a52a2a 12%,
+        #a52a2a 33%,
+        #e8dcc8 33%,
+        #e8dcc8 66%,
+        #3d6b3d 66%,
+        #3d6b3d 88%,
+        transparent 100%
+      );
+      opacity: 0.9;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================
+       ЗАГОЛОВКИ
+       ========================================================== */
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 40px;
+      font-weight: 900;
+      color: var(--gold);
+      margin-bottom: 12px;
+      text-align: center;
+      letter-spacing: 0.02em;
+      line-height: 1.15;
+      text-shadow: 0 2px 24px rgba(201, 164, 76, 0.18);
+    }
+
+    h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #3a2e20;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 64px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+
+    h3 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #8a7a5a;
+      font-style: italic;
+      margin-bottom: 34px;
+      font-size: 16px;
+      letter-spacing: 0.06em;
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .intro-text {
+      font-size: 16px;
+      margin-bottom: 28px;
+      color: #c8b898;
+      line-height: 1.75;
+      font-style: italic;
+      padding-left: 20px;
+      border-left: 2px solid #4a3a26;
+    }
+
+    /* ==========================================================
+       ЛЕГЕНДА
+       ========================================================== */
+    .legend {
+      background: linear-gradient(135deg, #2a2018 0%, #241c14 100%);
+      border: 1px solid #3a2e20;
+      border-left: 3px solid var(--gold);
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      font-size: 15px;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    .legend p { margin-bottom: 10px; color: #c8b898; }
+    .legend p:last-child { margin-bottom: 0; }
+    .legend strong { color: var(--white); font-weight: 600; }
+
+    /* ==========================================================
+       ПРОГРЕСС
+       ========================================================== */
+    .progress-bar {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 26px;
+    }
+
+    .progress-segment {
+      flex: 1;
+      height: 6px;
+      background: #2a2018;
+      border-radius: 3px;
+      transition: all 0.4s ease;
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45);
+    }
+
+    .progress-segment.done {
+      background: linear-gradient(90deg, var(--red-deep), var(--red));
+      box-shadow: 0 0 10px rgba(165, 42, 42, 0.45);
+    }
+
+    .progress-segment.active {
+      background: linear-gradient(90deg, var(--gold-soft), var(--gold));
+      box-shadow: 0 0 12px rgba(212, 164, 76, 0.55);
+      animation: pulse 2.2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50%      { opacity: 0.68; }
+    }
+
+    .task-counter {
+      font-size: 11px;
+      color: #8a7a5a;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .task-counter .streak {
+      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 2px 10px;
+      border: 1px solid rgba(212, 164, 76, 0.4);
+      border-radius: 12px;
+      background: rgba(212, 164, 76, 0.08);
+      animation: pop 0.4s ease;
+    }
+
+    @keyframes pop {
+      0%   { transform: scale(0.6); }
+      70%  { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    .question {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 19px;
+      margin-bottom: 24px;
+      color: var(--white);
+      line-height: 1.5;
+      font-weight: 400;
+    }
+
+    /* ==========================================================
+       ВАРИАНТЫ
+       ========================================================== */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .option {
+      background: linear-gradient(135deg, #2a2018 0%, #241c14 100%);
+      border: 1px solid #3a2e20;
+      border-radius: 4px;
+      padding: 14px 20px 14px 24px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 15px;
+      color: #d8c8a8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .option::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: var(--gold);
+      transform: scaleY(0);
+      transform-origin: top;
+      transition: transform 0.22s ease;
+    }
+
+    .option:hover {
+      background: linear-gradient(135deg, #32261a 0%, #2a2018 100%);
+      border-color: #6b5a3e;
+      transform: translateX(3px);
+    }
+    .option:hover::before { transform: scaleY(1); }
+
+    .option.selected {
+      background: linear-gradient(135deg, #4a3520 0%, #3a2818 100%);
+      border-color: var(--gold);
+      color: #f5ead8;
+      box-shadow:
+        0 0 0 1px rgba(212, 164, 76, 0.35),
+        0 4px 14px rgba(212, 164, 76, 0.12);
+    }
+    .option.selected::before { transform: scaleY(1); }
+
+    .option.correct {
+      background: linear-gradient(135deg, #1a3a1a 0%, #143014 100%);
+      border-color: #4a8a4a;
+      color: #b8e8b8;
+    }
+    .option.incorrect {
+      background: linear-gradient(135deg, #3a1a1a 0%, #2e1414 100%);
+      border-color: #8a4a4a;
+      color: #e8b8b8;
+    }
+
+    /* ==========================================================
+       КНОПКИ
+       ========================================================== */
+    .btn {
+      background: linear-gradient(135deg, var(--red) 0%, var(--red-deep) 100%);
+      color: #f5ead8;
+      border: 1px solid #c03a3a;
+      border-radius: 4px;
+      padding: 14px 34px;
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Source Sans Pro', sans-serif;
+      cursor: pointer;
+      transition: all 0.22s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      box-shadow:
+        0 4px 14px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #b83232 0%, #9a2020 100%);
+      transform: translateY(-2px);
+      box-shadow:
+        0 8px 22px rgba(139, 26, 26, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+    .btn:active { transform: translateY(0); box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); }
+    .btn:disabled { opacity: 0.35; cursor: not-allowed; transform: none; box-shadow: none; }
+
+    .btn.secondary {
+      background: linear-gradient(135deg, #3a2e20 0%, #2a2018 100%);
+      border-color: #6b5a3e;
+      color: #d8c8a8;
+    }
+    .btn.secondary:hover {
+      background: linear-gradient(135deg, #4a3e2e 0%, #3a2e20 100%);
+    }
+
+    .btn-center { text-align: center; margin-top: 26px; }
+
+    /* ==========================================================
+       ОБРАТНАЯ СВЯЗЬ
+       ========================================================== */
+    .feedback {
+      padding: 20px 24px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+      font-size: 15px;
+      line-height: 1.65;
+      border-left: 4px solid transparent;
+      animation: slideIn 0.35s ease both;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .feedback.correct {
+      background: linear-gradient(135deg, rgba(26, 58, 26, 0.55), rgba(20, 48, 20, 0.35));
+      border-left-color: #4a8a4a;
+      color: #c8e8c8;
+    }
+    .feedback.incorrect {
+      background: linear-gradient(135deg, rgba(58, 26, 26, 0.55), rgba(48, 20, 20, 0.35));
+      border-left-color: #8a4a4a;
+      color: #e8c8c8;
+    }
+
+    .feedback .label {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 700;
+      margin-bottom: 10px;
+      display: block;
+      font-size: 18px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ==========================================================
+       ХРОНОЛОГИЯ
+       ========================================================== */
+    .order-area {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .order-pool,
+    .order-result {
+      flex: 1;
+      min-width: 240px;
+      min-height: 180px;
+      background: rgba(20, 16, 12, 0.5);
+      border: 1px dashed #4a3e2e;
+      border-radius: 4px;
+      padding: 14px;
+    }
+
+    .order-label {
+      font-size: 11px;
+      color: #8a7a5a;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
+      font-weight: 600;
+    }
+
+    .order-item,
+    .order-selected {
+      background: linear-gradient(135deg, #2a2018, #241c14);
+      border: 1px solid #3a2e20;
+      border-radius: 4px;
+      padding: 10px 14px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      color: #d8c8a8;
+    }
+
+    .order-item:hover {
+      background: linear-gradient(135deg, #32261a, #2a2018);
+      border-color: #6b5a3e;
+      transform: translateX(3px);
+    }
+
+    .order-selected {
+      background: linear-gradient(135deg, #4a3520, #3a2818);
+      border-color: var(--gold);
+      color: #f5ead8;
+      cursor: default;
+    }
+
+    .match-area {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+      position: relative;
+      padding: 22px 4px 4px;
+    }
+
+    .match-area::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 8px;
+      border-radius: 4px;
+      background: linear-gradient(
+        90deg,
+        #ffffff 0%, #ffffff 33.33%,
+        #0039a6 33.33%, #0039a6 66.66%,
+        #d52b1e 66.66%, #d52b1e 100%
+      );
+      box-shadow:
+        0 2px 10px rgba(255, 255, 255, 0.2),
+        0 2px 14px rgba(0, 57, 166, 0.4),
+        0 2px 14px rgba(213, 43, 30, 0.4);
+      animation: tricolorGlow 3.5s ease-in-out infinite;
+      z-index: 1;
+    }
+
+    @keyframes tricolorGlow {
+      0%, 100% {
+        box-shadow:
+          0 2px 10px rgba(255, 255, 255, 0.2),
+          0 2px 14px rgba(0, 57, 166, 0.4),
+          0 2px 14px rgba(213, 43, 30, 0.4);
+      }
+      50% {
+        box-shadow:
+          0 2px 16px rgba(255, 255, 255, 0.35),
+          0 2px 22px rgba(0, 57, 166, 0.55),
+          0 2px 22px rgba(213, 43, 30, 0.55);
+      }
+    }
+
+    .match-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .match-item {
+      background: linear-gradient(135deg, #2a2018, #241c14);
+      border: 1px solid #3a2e20;
+      border-radius: 4px;
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      color: #d8c8a8;
+      position: relative;
+    }
+
+    .match-item:hover {
+      background: linear-gradient(135deg, #32261a, #2a2018);
+      border-color: #6b5a3e;
+    }
+
+    .match-item.selected {
+      background: linear-gradient(135deg, #3a2e20, #2a2018);
+      border-color: #ffffff;
+      color: #ffffff;
+      box-shadow:
+        0 0 0 2px rgba(255, 255, 255, 0.2),
+        0 4px 14px rgba(255, 255, 255, 0.15);
+    }
+
+    .match-item.paired {
+      background:
+        linear-gradient(180deg,
+          rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 33%,
+          rgba(0, 57, 166, 0.18) 33%, rgba(0, 57, 166, 0.18) 66%,
+          rgba(213, 43, 30, 0.18) 66%, rgba(213, 43, 30, 0.18) 100%
+        ),
+        linear-gradient(135deg, #2a2018, #241c14);
+      border-color: #6b5a3e;
+      color: #e8dcc8;
+      cursor: default;
+    }
+
+    .match-item.correct {
+      background:
+        linear-gradient(180deg,
+          rgba(255, 255, 255, 0.10) 0%, rgba(255, 255, 255, 0.10) 33%,
+          rgba(0, 57, 166, 0.35) 33%, rgba(0, 57, 166, 0.35) 66%,
+          rgba(213, 43, 30, 0.20) 66%, rgba(213, 43, 30, 0.20) 100%
+        ),
+        linear-gradient(135deg, #0a1e3a, #061428);
+      border-color: #0039a6;
+      color: #c0d8ff;
+      box-shadow: 0 0 14px rgba(0, 57, 166, 0.5);
+    }
+
+    .match-item.incorrect {
+      background:
+        linear-gradient(180deg,
+          rgba(255, 255, 255, 0.06) 0%, rgba(255, 255, 255, 0.06) 33%,
+          rgba(0, 57, 166, 0.15) 33%, rgba(0, 57, 166, 0.15) 66%,
+          rgba(213, 43, 30, 0.30) 66%, rgba(213, 43, 30, 0.30) 100%
+        ),
+        linear-gradient(135deg, #3a0a0a, #280606);
+      border-color: #d52b1e;
+      color: #ffb8b0;
+      box-shadow: 0 0 14px rgba(213, 43, 30, 0.5);
+    }
+
+    /* ==========================================================
+       СТАТИСТИКА
+       ========================================================== */
+    .stats {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      margin: 32px 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      min-width: 120px;
+      padding: 18px 22px;
+      background: rgba(20, 16, 12, 0.45);
+      border: 1px solid #3a2e20;
+      border-radius: 4px;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 38px;
+      color: var(--gold);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 6px;
+      text-shadow: 0 2px 16px rgba(212, 164, 76, 0.2);
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: #8a7a5a;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+    }
+
+    /* ==========================================================
+       ТАБЛИЦА
+       ========================================================== */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 22px 0;
+      font-size: 14px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid #2a2018;
+    }
+
+    th {
+      color: var(--gold);
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      background: rgba(20, 16, 12, 0.45);
+    }
+
+    td { color: #d8c8a8; }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(212, 164, 76, 0.04); }
+    td:first-child { color: var(--gold); font-weight: 600; white-space: nowrap; }
+
+    /* ==========================================================
+       СПРАВКА И СБРОС
+       ========================================================== */
+    .author-note {
+      background: linear-gradient(135deg, #2a2018 0%, #241c14 100%);
+      border: 1px solid #3a2e20;
+      border-top: 2px solid var(--gold);
+      border-radius: 4px;
+      padding: 22px 26px;
+      margin-top: 34px;
+      font-size: 14px;
+      color: #a89878;
+      line-height: 1.75;
+    }
+
+    .author-note h3 { color: var(--gold); margin-bottom: 10px; }
+
+    .reset-btn {
+      font-size: 11px;
+      color: #6b5a3e;
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-top: 22px;
+      font-family: 'Source Sans Pro', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: color 0.2s ease;
+      padding-bottom: 3px;
+      border-bottom: 1px solid transparent;
+    }
+
+    .reset-btn:hover { color: var(--gold); border-bottom-color: rgba(212, 164, 76, 0.4); }
+
+    /* ==========================================================
+       КНОПКА ЗВУКА
+       ========================================================== */
+    .sound-toggle {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3a2e20, #2a2018);
+      border: 1px solid #6b5a3e;
+      color: var(--gold);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transition: all 0.2s;
+      z-index: 100;
+    }
+
+    .sound-toggle:hover {
+      background: linear-gradient(135deg, #4a3e2e, #3a2e20);
+      transform: scale(1.08);
+      box-shadow: 0 8px 28px rgba(212, 164, 76, 0.25);
+    }
+
+    .sound-toggle:active { transform: scale(0.96); }
+
+    .sound-icon { width: 22px; height: 22px; }
+    body.sound-muted .sound-on  { display: none; }
+    body:not(.sound-muted) .sound-off { display: none; }
+
+      /* ==========================================================
+       КНОПКА СБРОСА
+       ========================================================== */
+    .reset-toggle {
+      position: fixed;
+      bottom: 24px;
+      left: 24px;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #3a2e20, #2a2018);
+      border: 1px solid #6b5a3e;
+      color: var(--gold);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+      transition: all 0.2s;
+      z-index: 100;
+    }
+
+    .reset-toggle:hover {
+      background: linear-gradient(135deg, #4a2e2e, #2a1818);
+      border-color: #a52a2a;
+      transform: scale(1.08);
+      box-shadow: 0 8px 28px rgba(165, 42, 42, 0.3);
+    }
+
+    .reset-toggle:active { transform: scale(0.96); }
+
+    .reset-toggle svg { width: 22px; height: 22px; }
+
+    .reset-toggle.hidden { display: none; }
+
+    /* ==========================================================
+       CONFETTI
+       ========================================================== */
+    .confetti-container {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9999;
+      overflow: hidden;
+    }
+
+    .confetti-piece {
+      position: absolute;
+      top: -20px;
+      width: 8px;
+      height: 14px;
+      opacity: 0;
+      animation: confettiFall linear forwards;
+    }
+
+    @keyframes confettiFall {
+      0%   { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(105vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* ==========================================================
+       АДАПТИВ
+       ========================================================== */
+    @media (max-width: 700px) {
+      body { padding: 16px 10px; }
+      #app { padding: 32px 22px 26px; }
+      #app::before { left: 20px; right: 20px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 20px; }
+      .question { font-size: 17px; }
+      .order-area, .match-area { flex-direction: column; }
+      .order-pool, .order-result { min-width: 0; }
+      .stat { min-width: 90px; padding: 14px 16px; }
+      .stat-value { font-size: 28px; }
+      .btn { padding: 13px 26px; font-size: 13px; }
+      th, td { padding: 10px 10px; font-size: 13px; }
+      .sound-toggle { bottom: 14px; right: 14px; width: 46px; height: 46px; }
+      .reset-toggle { bottom: 14px; left: 14px; width: 46px; height: 46px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+
+  <button id="soundToggle" class="sound-toggle" type="button" aria-label="Звук" title="Звук">
+    <svg class="sound-icon sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+    </svg>
+    <svg class="sound-icon sound-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+      <line x1="23" y1="9" x2="17" y2="15"></line>
+      <line x1="17" y1="9" x2="23" y2="15"></line>
+    </svg>
+  </button>
+
+  <button id="resetToggle" class="reset-toggle" type="button" aria-label="Сбросить прогресс" title="Сбросить прогресс">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="1 4 1 10 7 10"></polyline>
+      <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path>
+    </svg>
+  </button>
+
+  <audio id="bgMusic" preload="auto"></audio>
+
+  <script>
+    const STAGES = [
+      {
+        title: "Этап 1. Точка отсчёта: начало войны",
+        intro: "1917–1918 годы. После Октябрьского восстания страна погружается в хаос. Вам предстоит восстановить хронологию событий, которые привели к полномасштабной Гражданской войне.",
+        tasks: [
+          {
+            type: "order",
+            question: "Расставьте события в правильном порядке — от Октября 1917 к лету 1918 года:",
+            items: [
+              "Октябрьское восстание в Петрограде",
+              "Разгон Учредительного собрания",
+              "Подписание Брестского мира",
+              "Высадка английских войск в Мурманске",
+              "Мятеж Чехословацкого корпуса"
+            ],
+            correctOrder: [0, 1, 2, 3, 4],
+            explanation: "Октябрьское восстание — 25 октября 1917. Разгон Учредительного собрания — 6 января 1918. Брестский мир — 3 марта 1918. Высадка англичан в Мурманске — 9 марта 1918. Мятеж Чехословацкого корпуса — май 1918. Именно мятеж корпуса считается началом полномасштабной фронтовой войны."
+          },
+          {
+            type: "truefalse",
+            question: "Гражданская война началась стихийно, без участия организованных политических сил.",
+            correct: false,
+            explanation: "Неверно. Война стала следствием целенаправленных действий большевиков по удержанию власти и сопротивления тех, кто потерял власть и собственность в результате Октябрьской революции. Причины включают национализацию земли, разгон Учредительного собрания и заключение Брестского мира."
+          },
+          {
+            type: "single",
+            question: "Какое из перечисленных событий НЕ является причиной Гражданской войны?",
+            options: [
+              "Национализация всей земли и конфискация помещичьих земель",
+              "Разгон большевиками Учредительного собрания",
+              "Заключение Брестского мира с потерей обширных территорий",
+              "Создание Коминтерна в Москве в 1919 году"
+            ],
+            correct: 3,
+            explanation: "Коминтерн был создан в марте 1919 года, уже в разгар войны. Он не является причиной конфликта, а его следствием. Остальные три фактора — классические причины Гражданской войны."
+          },
+          {
+            type: "match",
+            question: "Соотнесите лагерь и его социальный состав:",
+            left: ["Красные", "Белые", "Зелёные"],
+            right: [
+              "Большевики, часть пролетариата, беднейшее крестьянство",
+              "Офицерство, дворянство, крупная буржуазия, казачество",
+              "Крестьяне, недовольные политикой и красных, и белых"
+            ],
+            correctPairs: [0, 1, 2],
+            explanation: "Красные — большевики и их союзники. Белые — офицерство, дворянство, буржуазия. Зелёные — крестьянские движения, выступавшие против реквизиций и мобилизаций с обеих сторон."
+          },
+          {
+            type: "single",
+            question: "Что стало непосредственным поводом для мятежа Чехословацкого корпуса в мае 1918 года?",
+            options: [
+              "Попытка советского правительства разоружить корпус",
+              "Нападение Германии на Чехословакию",
+              "Приказ Колчака о наступлении",
+              "Блокада Антанты"
+            ],
+            correct: 0,
+            explanation: "Мятеж был вызван попыткой советского правительства разоружить корпус. Эшелоны с чехословацкими легионерами растянулись от Пензы до Владивостока, и их выступление в мае 1918 года стало началом второго этапа войны."
+          }
+        ]
+      },
+      {
+        title: "Этап 2. Красные и белые: силы и лидеры",
+        intro: "Расстановка сил в Гражданской войне. Вам предстоит разобраться в лидерах Белого движения и их регионах действий.",
+        tasks: [
+          {
+            type: "casting",
+            question: "О ком идёт речь: «Адмирал, провозгласивший себя Верховным правителем России в ноябре 1918 года; его столицей был Омск; расстрелян в Иркутске в феврале 1920 года»?",
+            options: ["А. И. Деникин", "А. В. Колчак", "П. Н. Врангель", "Н. Н. Юденич"],
+            correct: 1,
+            explanation: "Александр Васильевич Колчак — 18 ноября 1918 года стал Верховным правителем России, его столицей был Омск. Расстрелян в Иркутске 7 февраля 1920 года."
+          },
+          {
+            type: "match",
+            question: "Соотнесите белого лидера и регион его действий:",
+            left: ["А. В. Колчак", "А. И. Деникин", "Н. Н. Юденич", "П. Н. Врангель"],
+            right: ["Сибирь", "Юг России", "Северо-Запад России (Петроград)", "Крым"],
+            correctPairs: [0, 1, 2, 3],
+            explanation: "Колчак — Сибирь, Деникин — Юг, Юденич — Петроград, Врангель — Крым. Деникин передал командование Врангелю в марте 1920 года после новороссийской катастрофы."
+          },
+          {
+            type: "single",
+            question: "Кто из красных командиров руководил разгромом Врангеля в Крыму?",
+            options: ["С. М. Будённый", "М. В. Фрунзе", "В. И. Чапаев", "К. Е. Ворошилов"],
+            correct: 1,
+            explanation: "М. В. Фрунзе командовал Южным фронтом, его части взяли Перекоп и Чонгар, форсировали Сиваш и ворвались в Крым. Чапаев погиб в 1919 году, Будённый командовал Первой Конной армией."
+          },
+          {
+            type: "truefalse",
+            question: "Лидеры Белого движения координировали свои действия и имели единое командование.",
+            correct: false,
+            explanation: "Неверно. Одной из ключевых причин поражения белых было отсутствие единого командования и согласованной стратегии. Колчак, Деникин, Юденич и Врангель действовали разрозненно, каждый на своём фронте."
+          }
+        ]
+      },
+      {
+        title: "Этап 3. 1918 год: разворачивание войны",
+        intro: "1918 год — год формирования фронтов и начала полномасштабной войны. Вам предстоит восстановить хронологию ключевых событий.",
+        tasks: [
+          {
+            type: "order",
+            question: "Расставьте события 1918 года в правильном порядке:",
+            items: [
+              "Разгон Учредительного собрания",
+              "Создание регулярной Красной армии",
+              "Брестский мир",
+              "Введение продовольственной диктатуры",
+              "Казнь царской семьи в Екатеринбурге",
+              "Декрет о красном терроре"
+            ],
+            correctOrder: [0, 1, 2, 3, 4, 5],
+            explanation: "Разгон Учредительного собрания — 6 января. Создание РККА — 20 января. Брестский мир — 3 марта. Продовольственная диктатура — 13 мая. Казнь царской семьи — 17 июля. Декрет о красном терроре — 5 сентября."
+          },
+          {
+            type: "single",
+            question: "Что стало непосредственным поводом для мятежа Чехословацкого корпуса?",
+            options: [
+              "Попытка советского правительства разоружить корпус",
+              "Нападение Германии на Чехословакию",
+              "Приказ Колчака о наступлении",
+              "Блокада Антанты"
+            ],
+            correct: 0,
+            explanation: "Мятеж был вызван попыткой советского правительства разоружить корпус. Эшелоны с чехословацкими легионерами растянулись от Пензы до Владивостока."
+          },
+          {
+            type: "casting",
+            question: "О ком идёт речь: «Бывший начальник Кирсановского районного отдела милиции, возглавивший крупнейшее крестьянское восстание в Тамбовской губернии в 1920–1921 годах»?",
+            options: ["Н. И. Махно", "А. С. Антонов", "С. В. Петлюра", "А. М. Каледин"],
+            correct: 1,
+            explanation: "Александр Степанович Антонов — руководитель Тамбовского восстания (антоновщины). Восстание вспыхнуло в августе 1920 года и стало крупнейшим антибольшевистским крестьянским восстанием в Центральной России."
+          },
+          {
+            type: "truefalse",
+            question: "Красный террор был объявлен в ответ на убийство председателя Петроградской ЧК Урицкого и покушение на Ленина.",
+            correct: true,
+            explanation: "Верно. В августе 1918 года был убит Урицкий, а Ленин тяжело ранен. 5 сентября 1918 года был принят Декрет о красном терроре, который стал официальной политикой репрессий."
+          },
+          {
+            type: "match",
+            question: "Соотнесите термин и определение:",
+            left: ["Продовольственная диктатура", "Красный террор", "Интервенция"],
+            right: [
+              "Система чрезвычайных мер по изъятию хлеба у крестьян",
+              "Массовые репрессии против классово чуждых элементов",
+              "Вооружённое вмешательство иностранных государств"
+            ],
+            correctPairs: [0, 1, 2],
+            explanation: "Продовольственная диктатура введена 13 мая 1918 года. Красный террор — с 5 сентября 1918 года. Интервенция — с марта 1918 года (высадка англичан в Мурманске)."
+          }
+        ]
+      },
+      {
+        title: "Этап 4. 1919 год: кульминация войны",
+        intro: "1919 год — год кульминации: одновременно наступали Колчак с востока, Деникин с юга и Юденич с северо-запада. Это был самый опасный момент для советской власти.",
+        tasks: [
+          {
+            type: "order",
+            question: "Расставьте события 1919 года в правильном порядке:",
+            items: [
+              "Наступление Колчака в Среднем Поволжье",
+              "Контрнаступление Красной армии против Колчака",
+              "Наступление Юденича на Петроград",
+              "Наступление Деникина на Москву"
+            ],
+            correctOrder: [0, 1, 2, 3],
+            explanation: "Колчак начал наступление в марте 1919. Контрнаступление Красной армии — с апреля. Юденич наступал на Петроград в мае–июле. Деникин — в сентябре 1919 года."
+          },
+          {
+            type: "single",
+            question: "Какое событие стало переломным в борьбе с Колчаком?",
+            options: [
+              "Взятие Омска",
+              "Контрнаступление Красной армии в Сибири весной–летом 1919 года",
+              "Расстрел Колчака",
+              "Наступление Деникина"
+            ],
+            correct: 1,
+            explanation: "С. С. Каменев и М. В. Фрунзе перешли в наступление, остановили колчаковцев и к лету оттеснили их в Сибирь. К началу 1920 года колчаковцы были окончательно разбиты."
+          },
+          {
+            type: "truefalse",
+            question: "Деникин в сентябре 1919 года взял Курск, Орёл и Воронеж и продвигался на Москву.",
+            correct: true,
+            explanation: "Верно. Это был пик наступления Деникина. Однако к декабрю 1919 — началу 1920 года его войска потерпели поражение, и фронт на Юге России рухнул."
+          },
+          {
+            type: "single",
+            question: "Какой город был столицей Колчака?",
+            options: ["Иркутск", "Омск", "Владивосток", "Екатеринбург"],
+            correct: 1,
+            explanation: "Омск был столицей колчаковского правительства с ноября 1918 года. Иркутск — место его ареста и расстрела."
+          },
+          {
+            type: "match",
+            question: "Соотнесите направление наступления и лидера:",
+            left: ["Восток (Сибирь — Поволжье)", "Юг (Дон — Москва)", "Северо-Запад (Петроград)"],
+            right: ["Колчак", "Деникин", "Юденич"],
+            correctPairs: [0, 1, 2],
+            explanation: "Колчак наступал с востока, Деникин — с юга, Юденич — с северо-запада на Петроград."
+          }
+        ]
+      },
+      {
+        title: "Этап 5. «Зелёные» и «малая гражданская война»",
+        intro: "Третий лагерь Гражданской войны — крестьянские движения, недовольные политикой и красных, и белых.",
+        tasks: [
+          {
+            type: "single",
+            question: "Кто возглавлял крупнейшее «зелёное» движение на Украине?",
+            options: ["Александр Антонов", "Нестор Махно", "Симон Петлюра", "Николай Юденич"],
+            correct: 1,
+            explanation: "Нестор Махно — революционер-анархист, возглавивший крестьянское движение на Украине. Его армия временно вступала в союз с красными для борьбы с Деникиным и Врангелем."
+          },
+          {
+            type: "truefalse",
+            question: "«Зелёные» представляли собой единую политическую силу с общей программой.",
+            correct: false,
+            explanation: "Неверно. «Зелёные» — это множество локальных крестьянских движений, не имевших единой программы и координации. Их общая черта — недовольство реквизициями и мобилизациями с обеих сторон."
+          },
+          {
+            type: "casting",
+            question: "О ком идёт речь: «Командующий Южным фронтом Красной армии, руководивший разгромом Врангеля в Крыму; в 1921 году руководил подавлением Тамбовского восстания»?",
+            options: ["М. В. Фрунзе", "С. М. Будённый", "В. И. Чапаев", "К. Е. Ворошилов"],
+            correct: 0,
+            explanation: "Михаил Васильевич Фрунзе возглавлял Южный фронт при взятии Перекопа и Чонгара. Под его командованием также было подавлено Тамбовское восстание (антоновщина)."
+          },
+          {
+            type: "match",
+            question: "Соотнесите восстание и регион:",
+            left: ["Антоновщина", "Кронштадтское восстание", "Махновское движение"],
+            right: ["Тамбовская губерния", "Кронштадт (Балтийский флот)", "Украина"],
+            correctPairs: [0, 1, 2],
+            explanation: "Антоновщина — Тамбовщина, Кронштадтское восстание — март 1921, махновщина — Украина."
+          }
+        ]
+      },
+      {
+        title: "Этап 6. Интервенция и её роль",
+        intro: "Иностранное вмешательство в Гражданскую войну. В интервенции участвовали войска 14 государств.",
+        tasks: [
+          {
+            type: "single",
+            question: "Какая страна первой начала военную интервенцию в Советскую Россию?",
+            options: ["США", "Великобритания", "Япония", "Франция"],
+            correct: 1,
+            explanation: "9 марта 1918 года английские войска высадились в Мурманске. Это стало началом иностранной военной интервенции в России."
+          },
+          {
+            type: "truefalse",
+            question: "Интервенция Антанты была направлена исключительно на поддержку Белого движения.",
+            correct: false,
+            explanation: "Неверно. Цели интервенции были шире: заставить Россию продолжить участие в Первой мировой войне на стороне Антанты, защитить свои интересы на территории России, оказать помощь Белому движению, а также не допустить распространения идей мировой революции в Европу и Азию."
+          },
+          {
+            type: "match",
+            question: "Соотнесите страну и регион её интервенции:",
+            left: ["Великобритания", "Япония", "Франция", "США"],
+            right: ["Русский Север, Закавказье", "Дальний Восток", "Юг России (Одесса)", "Дальний Восток, Север"],
+            correctPairs: [0, 1, 2, 3],
+            explanation: "В интервенции участвовали войска 14 государств. Помимо стран Антанты, в ней участвовали Германия, Австро-Венгрия и Турция (до Компьенского перемирия)."
+          },
+          {
+            type: "single",
+            question: "Когда завершилась иностранная военная интервенция на Дальнем Востоке?",
+            options: ["1920 год", "1921 год", "1922 год", "1923 год"],
+            correct: 2,
+            explanation: "25 октября 1922 года Красная армия взяла Владивосток — это последнее крупное сражение Гражданской войны. Японские войска эвакуировались с Дальнего Востока."
+          }
+        ]
+      },
+      {
+        title: "Этап 7. Итоги и последствия",
+        intro: "Завершение войны и её последствия для страны. Вам предстоит обобщить материал и сделать выводы.",
+        tasks: [
+          {
+            type: "order",
+            question: "Расставьте события в правильном порядке:",
+            items: [
+              "Разгром Врангеля в Крыму",
+              "Кронштадтское восстание",
+              "Замена продразвёрстки продналогом — начало НЭПа",
+              "Взятие Владивостока"
+            ],
+            correctOrder: [0, 1, 2, 3],
+            explanation: "Разгром Врангеля — ноябрь 1920. Кронштадтское восстание — март 1921. НЭП — март 1921. Взятие Владивостока — октябрь 1922."
+          },
+          {
+            type: "single",
+            question: "Каковы примерные людские потери России в Гражданской войне?",
+            options: ["1–2 млн человек", "5–6 млн человек", "13–16 млн человек", "25–30 млн человек"],
+            correct: 2,
+            explanation: "Человеческие жертвы оцениваются в 13–16 млн человек, включая потери от голода и эпидемий. Это в несколько раз больше потерь России в Первой мировой войне."
+          },
+          {
+            type: "truefalse",
+            question: "Гражданская война привела к сохранению территориальной целостности России.",
+            correct: true,
+            explanation: "Верно. Несмотря на потерю Польши, Финляндии, Прибалтики и других территорий по Брестскому миру, большевикам в итоге удалось сохранить государственность и территориальную целостность большей части бывшей империи."
+          },
+          {
+            type: "match",
+            question: "Соотнесите итог и его содержание:",
+            left: ["Политический", "Экономический", "Социальный"],
+            right: [
+              "Установление однопартийной диктатуры большевиков",
+              "Промышленное производство сократилось в 7 раз",
+              "Эмиграция около 2 млн человек, детская беспризорность"
+            ],
+            correctPairs: [0, 1, 2],
+            explanation: "Политический итог — однопартийная диктатура. Экономический — падение производства. Социальный — эмиграция и беспризорность."
+          },
+          {
+            type: "single",
+            question: "Какая политика пришла на смену «военному коммунизму» после Гражданской войны?",
+            options: ["Индустриализация", "Новая экономическая политика (НЭП)", "Коллективизация", "Продразвёрстка"],
+            correct: 1,
+            explanation: "В марте 1921 года продразвёрстка была заменена продналогом, что ознаменовало переход к НЭПу. Это стало реакцией на Кронштадтское восстание и крестьянские выступления."
+          }
+        ]
+      }
+    ];
+
+    /* ==========================================================
+       ЗВУК
+       ========================================================== */
+    const Sound = {
+      ctx: null,
+      muted: false,
+
+      ensure() {
+        if (!this.ctx) {
+          try {
+            this.ctx = new (window.AudioContext || window.webkitAudioContext)();
+          } catch (e) { return null; }
+        }
+        if (this.ctx.state === 'suspended') this.ctx.resume();
+        return this.ctx;
+      },
+
+      tone(freq, dur, type = 'sine', vol = 0.06, delay = 0) {
+        const c = this.ensure();
+        if (!c || this.muted) return;
+        const t0 = c.currentTime + delay;
+        const osc = c.createOscillator();
+        const gain = c.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, t0);
+        gain.gain.setValueAtTime(0, t0);
+        gain.gain.linearRampToValueAtTime(vol, t0 + 0.012);
+        gain.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+        osc.connect(gain).connect(c.destination);
+        osc.start(t0);
+        osc.stop(t0 + dur + 0.05);
+      },
+
+      rustle() {
+        const c = this.ensure();
+        if (!c || this.muted) return;
+        const dur = 0.18;
+        const bufferSize = c.sampleRate * dur;
+        const buffer = c.createBuffer(1, bufferSize, c.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+          data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 2);
+        }
+        const src = c.createBufferSource();
+        src.buffer = buffer;
+        const filter = c.createBiquadFilter();
+        filter.type = 'bandpass';
+        filter.frequency.value = 800 + Math.random() * 600;
+        filter.Q.value = 1;
+        const gain = c.createGain();
+        gain.gain.value = 0.04;
+        src.connect(filter).connect(gain).connect(c.destination);
+        src.start();
+      },
+
+      typewriter() {
+        for (let i = 0; i < 4; i++) {
+          this.tone(320 + Math.random() * 200, 0.03, 'square', 0.025, i * 0.07);
+        }
+      },
+
+      bell() {
+        [440, 554, 659, 880, 1109].forEach((f, i) => {
+          this.tone(f, 2.5, 'sine', 0.06 - i * 0.008, i * 0.03);
+        });
+      },
+
+      click()    { this.tone(520, 0.05, 'triangle', 0.06); },
+      select()   { this.tone(720, 0.07, 'sine', 0.06); this.tone(1080, 0.06, 'sine', 0.04, 0.05); },
+      correct()  { [523.25, 659.25, 783.99, 1046.5].forEach((f, i) => this.tone(f, 0.2, 'sine', 0.07, i * 0.08)); },
+      incorrect(){ this.tone(330, 0.16, 'sawtooth', 0.06); this.tone(220, 0.32, 'sawtooth', 0.06, 0.1); this.tone(165, 0.4, 'triangle', 0.04, 0.2); },
+      complete() { [523.25, 659.25, 783.99].forEach((f, i) => this.tone(f, 0.45, 'sine', 0.07, i * 0.1)); this.tone(1046.5, 0.7, 'sine', 0.08, 0.3); this.bell(); },
+
+      toggleMute() {
+        this.muted = !this.muted;
+        return this.muted;
+      }
+    };
+
+    /* ==========================================================
+       МУЗЫКА — плейлист с рандомным порядком
+       ========================================================== */
+    const TRACKS = [
+      /* Рабочие прямые ссылки. Для своей музыки замените на .mp3 */
+      'https://www.chosic.com/download-audio/58986/',
+      'https://www.chosic.com/download-audio/58986/',
+      'https://www.chosic.com/download-audio/58986/'
+    ];
+
+    const Music = {
+      el: null,
+      started: false,
+      failed: false,
+      queue: [],
+      currentIndex: -1,
+      lastPlayed: null,
+      targetVolume: 0.45,
+
+      init() {
+        this.el = document.getElementById('bgMusic');
+        if (!this.el) { console.error('Music: #bgMusic не найден'); this.failed = true; return; }
+        if (!TRACKS.length) { console.error('Music: TRACKS пуст'); this.failed = true; return; }
+
+        this.queue = this.shuffle([...TRACKS]);
+        this.currentIndex = 0;
+
+        this.el.addEventListener('ended', () => {
+          console.log('Music: трек закончился, включаю следующий');
+          this.next();
+        });
+
+        this.el.addEventListener('error', () => {
+          console.warn('Music: не загрузился трек:', this.el.src);
+          if (this.started) this.next();
+        });
+
+        console.log('Music: инициализировано, треков:', TRACKS.length);
+      },
+
+      shuffle(arr) {
+        const a = [...arr];
+        for (let i = a.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [a[i], a[j]] = [a[j], a[i]];
+        }
+        return a;
+      },
+
+      pickNext() {
+        this.currentIndex++;
+        if (this.currentIndex >= this.queue.length) {
+          this.queue = this.shuffle([...TRACKS]);
+          this.currentIndex = 0;
+          if (this.queue.length > 1 && this.queue[0] === this.lastPlayed) {
+            const tmp = this.queue[0];
+            this.queue[0] = this.queue[this.queue.length - 1];
+            this.queue[this.queue.length - 1] = tmp;
+          }
+        }
+        return this.queue[this.currentIndex];
+      },
+
+      async play() {
+        if (this.failed || !this.el) return;
+
+        const src = this.pickNext();
+        this.lastPlayed = src;
+        this.el.src = src;
+        this.el.volume = 0;
+
+        console.log('Music: пытаюсь запустить:', src);
+
+        try {
+          await this.el.play();
+          this.started = true;
+          console.log('Music: играет ✓');
+          this.fadeIn(2000);
+        } catch (err) {
+          console.error('Music: play() не сработал:', err.name, err.message);
+          this.failed = true;
+        }
+      },
+
+      async next() {
+        if (this.failed || !this.el) return;
+        const src = this.pickNext();
+        this.lastPlayed = src;
+        this.el.src = src;
+        this.el.volume = this.targetVolume;
+        console.log('Music: следующий трек:', src);
+
+        try {
+          await this.el.play();
+        } catch (err) {
+          console.error('Music: не удалось переключить трек:', err.message);
+        }
+      },
+
+      fadeIn(ms = 1500) {
+        if (!this.el) return;
+        const target = this.targetVolume;
+        this.el.volume = 0;
+        const steps = 30;
+        const step = target / steps;
+        const interval = ms / steps;
+        let i = 0;
+        const t = setInterval(() => {
+          i++;
+          this.el.volume = Math.min(target, this.el.volume + step);
+          if (i >= steps) clearInterval(t);
+        }, interval);
+      },
+
+      fadeOut(ms = 400) {
+        if (!this.el) return;
+        const start = this.el.volume;
+        const steps = 20;
+        const step = start / steps;
+        const interval = ms / steps;
+        let i = 0;
+        const t = setInterval(() => {
+          i++;
+          this.el.volume = Math.max(0, this.el.volume - step);
+          if (i >= steps) {
+            clearInterval(t);
+            this.el.pause();
+          }
+        }, interval);
+      }
+    };
+
+    /* ==========================================================
+       СОСТОЯНИЕ
+       ========================================================== */
+    const STORAGE_KEY = 'gw_quest_v3';
+
+    const DEFAULT_STATE = {
+      screen: 'start',
+      stageIndex: 0,
+      taskIndex: 0,
+      score: 0,
+      totalAnswered: 0,
+      stageScores: [0, 0, 0, 0, 0, 0, 0],
+      streak: 0,
+      maxStreak: 0
+    };
+
+    let state = { ...DEFAULT_STATE, stageScores: [0, 0, 0, 0, 0, 0, 0] };
+    let ui = {};
+
+    /* ==========================================================
+       ХРАНИЛИЩЕ
+       ========================================================== */
+    function loadState() {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (!saved) return;
+      try {
+        const parsed = JSON.parse(saved);
+        if (parsed && parsed.state) {
+          state = {
+            ...DEFAULT_STATE,
+            ...parsed.state,
+            stageScores: parsed.state.stageScores || [0, 0, 0, 0, 0, 0, 0]
+          };
+        }
+      } catch (e) {}
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ state }));
+    }
+
+    function resetProgress() {
+      if (!confirm('Сбросить весь прогресс и начать заново?')) return;
+      localStorage.removeItem(STORAGE_KEY);
+      state = { ...DEFAULT_STATE, stageScores: [0, 0, 0, 0, 0, 0, 0] };
+      ui = {};
+      Sound.click();
+      render();
+    }
+
+    /* ==========================================================
+       РЕНДЕР
+       ========================================================== */
+    function render() {
+      const app = document.getElementById('app');
+      let html = '';
+      switch (state.screen) {
+        case 'start':         html = screenStart(); break;
+        case 'stageIntro':    html = screenStageIntro(); break;
+        case 'task':          html = screenTask(); break;
+        case 'feedback':      html = screenFeedback(); break;
+        case 'stageComplete': html = screenStageComplete(); break;
+        case 'final':         html = screenFinal(); break;
+      }
+      app.innerHTML = html;
+      if (state.screen === 'task') updateCheckBtn();
+      updateResetVisibility();
+      saveState();
+    }
+
+    function updateResetVisibility() {
+      const btn = document.getElementById('resetToggle');
+      if (!btn) return;
+      btn.classList.toggle('hidden', state.screen === 'start');
+    }
+
+    function progressBar() {
+      let html = '<div class="progress-bar">';
+      for (let i = 0; i < STAGES.length; i++) {
+        let cls = 'progress-segment';
+        const isDone = i < state.stageIndex
+          || (i === state.stageIndex && state.screen === 'stageComplete');
+        const isActive = i === state.stageIndex;
+        if (isDone) cls += ' done';
+        else if (isActive) cls += ' active';
+        html += `<div class="${cls}"></div>`;
+      }
+      return html + '</div>';
+    }
+
+    function taskIcon(type) {
+      return {
+        order: '🕰️',
+        truefalse: '⚖️',
+        single: '🎯',
+        casting: '🎭',
+        match: '🔗'
+      }[type] || '📜';
+    }
+
+    function streakBadge() {
+      if (!state.streak || state.streak < 2) return '';
+      return `<span class="streak">🔥 Серия: ${state.streak}</span>`;
+    }
+
+    /* ==========================================================
+       ЭКРАНЫ
+       ========================================================== */
+    function screenStart() {
+      return `
+        <h1>📜 Три цвета правды</h1>
+        <div class="subtitle">Гражданская война в России (1917–1922)</div>
+
+        <div class="legend">
+          <p><strong>Легенда.</strong> Вы военный корреспондент, отправленный в охваченную войной Россию. Ваша задача - пройти семь этапов, восстановить хронологию событий, разобраться в силах сторон и собрать «фотоархив» Гражданской войны.</p>
+          <p>На каждом этапе вас ждут задания разных типов: хронология, верно/неверно, выбор, соотнесение, кастинг. За каждый правильный ответ - 1 балл. В конце вас ждёт итоговая сводка.</p>
+          <p><strong>Всего заданий:</strong> 32. <strong>Этапов:</strong> 7.</p>
+        </div>
+
+        <div class="btn-center">
+          <button class="btn" onclick="startGame()">▶ Начать</button>
+        </div>
+
+        <div class="author-note">
+          <h3>Авторский комментарий</h3>
+          <p>Тема выбрана потому, что Гражданская война - одна из самых сложных для понимания тем курса 10–11 классов: многополярность конфликта, хронологическая неопределённость, обилие персоналий и терминов(ну и + это моя самая любимая и выжатая, для меня, тема в истории России, не хочу похвастаться но я в ней эксперт... похвастался:)). Тренажёр помогает выстроить целостную картину события, от причин к последствиям.</p>
+        </div>
+
+        <div style="text-align:center">
+          <button class="reset-btn" onclick="resetProgress()">Сбросить прогресс</button>
+        </div>
+      `;
+    }
+
+    function screenStageIntro() {
+      const stage = STAGES[state.stageIndex];
+      return `
+        ${progressBar()}
+        <h2>⚔️ ${stage.title}</h2>
+        <div class="intro-text">${stage.intro}</div>
+        <div class="btn-center">
+          <button class="btn" onclick="startStage()">▶ Начать этап</button>
+        </div>
+      `;
+    }
+
+    function screenTask() {
+      const stage = STAGES[state.stageIndex];
+      const task = stage.tasks[state.taskIndex];
+
+      return `
+        ${progressBar()}
+        <h2>${stage.title}</h2>
+        <div class="task-counter">
+          <span>${taskIcon(task.type)} Задание ${state.taskIndex + 1} из ${stage.tasks.length} · Счёт: ${state.score}</span>
+          ${streakBadge()}
+        </div>
+        <div class="question">${task.question}</div>
+        ${renderTaskBody(task)}
+        <div class="btn-center">
+          <button class="btn" id="checkBtn" onclick="checkAnswer()" disabled>✓ Проверить</button>
+        </div>
+      `;
+    }
+
+    function screenFeedback() {
+      const stage = STAGES[state.stageIndex];
+      const task = stage.tasks[state.taskIndex];
+      const isCorrect = ui.lastCorrect;
+      const lastTask = state.taskIndex === stage.tasks.length - 1;
+
+      return `
+        ${progressBar()}
+        <h2>${stage.title}</h2>
+        <div class="task-counter">
+          <span>${taskIcon(task.type)} Задание ${state.taskIndex + 1} из ${stage.tasks.length} · Счёт: ${state.score}</span>
+          ${streakBadge()}
+        </div>
+        <div class="question">${task.question}</div>
+
+        <div class="feedback ${isCorrect ? 'correct' : 'incorrect'}">
+          <span class="label">${isCorrect ? '✅ Верно!' : '❌ Неверно'}</span>
+          <div>${task.explanation}</div>
+        </div>
+
+        <div class="btn-center">
+          <button class="btn" onclick="nextTask()">${lastTask ? '🏁 Завершить этап' : '▶ Далее'}</button>
+        </div>
+      `;
+    }
+
+    function screenStageComplete() {
+      const stage = STAGES[state.stageIndex];
+      const total = stage.tasks.length;
+      const correct = state.stageScores[state.stageIndex];
+      const lastStage = state.stageIndex === STAGES.length - 1;
+
+      return `
+        ${progressBar()}
+        <h2>🏆 ${stage.title} — завершён</h2>
+        <div class="stats">
+          <div class="stat"><div class="stat-value">${correct}/${total}</div><div class="stat-label">Правильных</div></div>
+          <div class="stat"><div class="stat-value">${state.score}</div><div class="stat-label">Общий счёт</div></div>
+          <div class="stat"><div class="stat-value">${state.maxStreak || 0}</div><div class="stat-label">Лучшая серия</div></div>
+        </div>
+        <div class="btn-center">
+          <button class="btn" onclick="${lastStage ? 'showFinal()' : 'nextStage()'}">
+            ${lastStage ? '🏁 Итоги' : '▶ Следующий этап'}
+          </button>
+        </div>
+      `;
+    }
+
+    function screenFinal() {
+      const totalTasks = STAGES.reduce((sum, st) => sum + st.tasks.length, 0);
+      const percent = Math.round(state.score / totalTasks * 100);
+
+      return `
+        <h1>📜 Итоговый репортаж</h1>
+        <div class="subtitle">Три цвета правды — одна трагедия</div>
+
+        <div class="stats">
+          <div class="stat"><div class="stat-value">${state.score}/${totalTasks}</div><div class="stat-label">Правильных</div></div>
+          <div class="stat"><div class="stat-value">${percent}%</div><div class="stat-label">Успех</div></div>
+          <div class="stat"><div class="stat-value">${state.maxStreak || 0}</div><div class="stat-label">Лучшая серия</div></div>
+        </div>
+
+        <h2>Ключевые выводы</h2>
+        <table>
+          <tr><th>Этап</th><th>Вывод</th></tr>
+          <tr><td>Начало</td><td>Война стала следствием Октября и разгона Учредительного собрания</td></tr>
+          <tr><td>Силы</td><td>Три лагеря: красные, белые, зелёные — плюс интервенты</td></tr>
+          <tr><td>1918</td><td>Мятеж Чехословацкого корпуса открыл фронтовую войну</td></tr>
+          <tr><td>1919</td><td>Кульминация: одновременные наступления Колчака, Деникина, Юденича</td></tr>
+          <tr><td>Зелёные</td><td>Крестьянские восстания против обеих сторон</td></tr>
+          <tr><td>Интервенция</td><td>14 государств, но решающей роли в исходе не сыграла</td></tr>
+          <tr><td>Итоги</td><td>13–16 млн жертв, победа большевиков, переход к НЭПу</td></tr>
+        </table>
+
+        <div class="author-note">
+          <h3>Историческая справка</h3>
+          <p>Гражданская война в России (1917–1922) — вооружённое противостояние между различными социальными, политическими и национальными силами на территории бывшей Российской империи. Основные причины: национализация земли, разгон Учредительного собрания, Брестский мир, продовольственная диктатура. Война завершилась победой большевиков и установлением однопартийной диктатуры, переходом к НЭПу в марте 1921 года.</p>
+        </div>
+
+        <div class="btn-center">
+          <button class="btn" onclick="restart()">🔄 Пройти заново</button>
+        </div>
+      `;
+    }
+
+    /* ==========================================================
+       ТЕЛО ЗАДАНИЯ
+       ========================================================== */
+    function renderTaskBody(task) {
+      switch (task.type) {
+        case 'single':
+        case 'casting': return renderSingleOptions(task);
+        case 'truefalse': return renderTrueFalseOptions();
+        case 'order': return renderOrderTask(task);
+        case 'match': return renderMatchTask(task);
+        default: return '';
+      }
+    }
+
+    function renderSingleOptions(task) {
+      let html = '<div class="options">';
+      task.options.forEach((opt, i) => {
+        const sel = ui.selected === i ? ' selected' : '';
+        html += `<div class="option${sel}" onclick="selectSingle(${i})">${opt}</div>`;
+      });
+      return html + '</div>';
+    }
+
+    function renderTrueFalseOptions() {
+      const opts = [
+        { value: true, label: '✅ Верно' },
+        { value: false, label: '❌ Неверно' }
+      ];
+      let html = '<div class="options">';
+      opts.forEach(o => {
+        const sel = ui.selected === o.value ? ' selected' : '';
+        html += `<div class="option${sel}" onclick="selectTrueFalse(${o.value})">${o.label}</div>`;
+      });
+      return html + '</div>';
+    }
+
+    function renderOrderTask(task) {
+      if (!ui.orderShuffle) {
+        ui.orderShuffle = shuffle([...Array(task.items.length).keys()]);
+        ui.orderSelection = [];
+      }
+
+      let html = '<div class="order-area">';
+      html += '<div class="order-pool"><div class="order-label">Доступные события</div>';
+      ui.orderShuffle.forEach(idx => {
+        if (!ui.orderSelection.includes(idx)) {
+          html += `<div class="order-item" onclick="selectOrderItem(${idx})">${task.items[idx]}</div>`;
+        }
+      });
+      html += '</div>';
+
+      html += '<div class="order-result"><div class="order-label">Ваш порядок</div>';
+      ui.orderSelection.forEach((idx, i) => {
+        html += `<div class="order-selected">${i + 1}. ${task.items[idx]}</div>`;
+      });
+      if (ui.orderSelection.length < task.items.length) {
+        html += '<div style="color:#a89878;font-size:13px;margin-top:8px;">Выберите все события…</div>';
+      }
+      html += '</div></div>';
+      return html;
+    }
+
+    function renderMatchTask(task) {
+      if (!ui.matchPairs) ui.matchPairs = {};
+      if (ui.matchSelectedLeft === undefined) ui.matchSelectedLeft = null;
+
+      const pairedCount = Object.keys(ui.matchPairs).length;
+
+      let html = '<div class="match-area">';
+      html += '<div class="match-col">';
+      task.left.forEach((label, i) => {
+        let cls = 'match-item';
+        if (ui.matchSelectedLeft === i) cls += ' selected';
+        if (ui.matchPairs[i] !== undefined) cls += ' paired';
+        html += `<div class="${cls}" onclick="selectMatchLeft(${i})">${label}</div>`;
+      });
+      html += '</div>';
+
+      html += '<div class="match-col">';
+      task.right.forEach((label, j) => {
+        const used = Object.values(ui.matchPairs).includes(j);
+        const cls = 'match-item' + (used ? ' paired' : '');
+        html += `<div class="${cls}" onclick="selectMatchRight(${j})">${label}</div>`;
+      });
+      html += '</div></div>';
+
+      html += `<div style="color:#a89878;font-size:13px;margin-bottom:12px;">Сопоставлено: ${pairedCount} из ${task.left.length}</div>`;
+      return html;
+    }
+
+    /* ==========================================================
+       УТИЛИТЫ
+       ========================================================== */
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function arraysEqual(a, b) {
+      if (!a || !b || a.length !== b.length) return false;
+      return a.every((v, i) => v === b[i]);
+    }
+
+    /* ==========================================================
+       CONFETTI
+       ========================================================== */
+    function confetti() {
+      const colors = ['#d4a44c', '#a52a2a', '#0039a6', '#f0e8d8', '#3d6b3d'];
+      const container = document.createElement('div');
+      container.className = 'confetti-container';
+      document.body.appendChild(container);
+
+      for (let i = 0; i < 42; i++) {
+        const p = document.createElement('div');
+        p.className = 'confetti-piece';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        p.style.animationDelay = (Math.random() * 0.35) + 's';
+        p.style.animationDuration = (1.6 + Math.random() * 1.2) + 's';
+        p.style.width = (6 + Math.random() * 6) + 'px';
+        p.style.height = (10 + Math.random() * 8) + 'px';
+        container.appendChild(p);
+      }
+      setTimeout(() => container.remove(), 3200);
+    }
+
+    /* ==========================================================
+       ПЕРЕХОДЫ
+       ========================================================== */
+    function startGame() {
+      state = { ...DEFAULT_STATE, stageScores: [0, 0, 0, 0, 0, 0, 0], screen: 'stageIntro' };
+      ui = {};
+      Sound.ensure();
+      Music.play();
+      Sound.click();
+      render();
+    }
+
+    function startStage() {
+      state.screen = 'task';
+      state.taskIndex = 0;
+      ui = {};
+      Sound.rustle();
+      render();
+    }
+
+    function nextTask() {
+      const stage = STAGES[state.stageIndex];
+      if (state.taskIndex < stage.tasks.length - 1) {
+        state.taskIndex++;
+        ui = {};
+        state.screen = 'task';
+        Sound.rustle();
+      } else {
+        state.screen = 'stageComplete';
+        Sound.complete();
+      }
+      render();
+    }
+
+    function nextStage() {
+      state.stageIndex++;
+      state.taskIndex = 0;
+      ui = {};
+      state.screen = 'stageIntro';
+      Sound.rustle();
+      render();
+    }
+
+    function showFinal() {
+      state.screen = 'final';
+      Sound.bell();
+      render();
+    }
+
+    function restart() {
+      localStorage.removeItem(STORAGE_KEY);
+      state = { ...DEFAULT_STATE, stageScores: [0, 0, 0, 0, 0, 0, 0] };
+      ui = {};
+      Sound.click();
+      render();
+    }
+
+    /* ==========================================================
+       ВЫБОР
+       ========================================================== */
+    function selectSingle(i) {
+      ui.selected = i;
+      Sound.select();
+      render();
+    }
+
+    function selectTrueFalse(v) {
+      ui.selected = v;
+      Sound.select();
+      render();
+    }
+
+    function selectOrderItem(idx) {
+      ui.orderSelection.push(idx);
+      Sound.select();
+      render();
+    }
+
+    function selectMatchLeft(i) {
+      ui.matchSelectedLeft = i;
+      Sound.select();
+      render();
+    }
+
+    function selectMatchRight(j) {
+      if (ui.matchSelectedLeft === null || ui.matchSelectedLeft === undefined) return;
+      if (Object.values(ui.matchPairs).includes(j)) return;
+      ui.matchPairs[ui.matchSelectedLeft] = j;
+      ui.matchSelectedLeft = null;
+      Sound.select();
+      render();
+    }
+
+    /* ==========================================================
+       ПРОВЕРКА
+       ========================================================== */
+    function updateCheckBtn() {
+      const task = STAGES[state.stageIndex].tasks[state.taskIndex];
+      const btn = document.getElementById('checkBtn');
+      if (!btn) return;
+
+      let ready = false;
+      switch (task.type) {
+        case 'single':
+        case 'casting':
+        case 'truefalse':
+          ready = ui.selected !== undefined;
+          break;
+        case 'order':
+          ready = ui.orderSelection && ui.orderSelection.length === task.items.length;
+          break;
+        case 'match':
+          ready = ui.matchPairs && Object.keys(ui.matchPairs).length === task.left.length;
+          break;
+      }
+      btn.disabled = !ready;
+    }
+
+    function checkAnswer() {
+      const stage = STAGES[state.stageIndex];
+      const task = stage.tasks[state.taskIndex];
+
+      let isCorrect = false;
+      switch (task.type) {
+        case 'single':
+        case 'casting':
+        case 'truefalse':
+          isCorrect = ui.selected === task.correct;
+          break;
+        case 'order':
+          isCorrect = arraysEqual(ui.orderSelection, task.correctOrder);
+          break;
+        case 'match':
+          isCorrect = task.left.every((_, i) => ui.matchPairs[i] === task.correctPairs[i]);
+          break;
+      }
+
+      state.totalAnswered++;
+      if (isCorrect) {
+        state.score++;
+        state.stageScores[state.stageIndex]++;
+        state.streak = (state.streak || 0) + 1;
+        state.maxStreak = Math.max(state.maxStreak || 0, state.streak);
+        Sound.correct();
+        confetti();
+      } else {
+        state.streak = 0;
+        Sound.incorrect();
+      }
+
+      ui.lastCorrect = isCorrect;
+      state.screen = 'feedback';
+      Sound.typewriter();
+      render();
+    }
+
+    function initSoundToggle() {
+      const btn = document.getElementById('soundToggle');
+      if (!btn) return;
+
+      btn.addEventListener('click', () => {
+        const muted = Sound.toggleMute();
+        document.body.classList.toggle('sound-muted', muted);
+
+        if (muted) {
+          Music.fadeOut(400);
+        } else {
+          if (Music.el && Music.el.src) {
+            Music.el.play()
+              .then(() => Music.fadeIn(600))
+              .catch(() => Music.play());
+          } else {
+            Music.play();
+          }
+          Sound.click();
+        }
+      });
+
+      if (Sound.muted) document.body.classList.add('sound-muted');
+    }
+
+    function initResetToggle() {
+      const btn = document.getElementById('resetToggle');
+      if (!btn) return;
+      btn.addEventListener('click', resetProgress);
+    }
+
+    Music.init();
+    loadState();
+    render();
+    initSoundToggle();
+    initResetToggle();
+  </script>
+</body>
+</html>
