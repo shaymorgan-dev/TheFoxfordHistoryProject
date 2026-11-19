@@ -55,7 +55,7 @@
 
 1. Склонируй репозиторий:
    ```bash
-   git clone https://github.com/shaymorgan-dev/НАЗВАНИЕ_ТВОЕГО_РЕПОЗИТОРИЯ.git
+   git clone https://github.com/shaymorgan-dev/TheFoxfordHistoryProject.git
 
 2. Открой файл index.html в любом современном браузере (двойным кликом).
 
