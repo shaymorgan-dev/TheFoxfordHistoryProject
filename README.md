@@ -7,6 +7,9 @@
 
 **🔗 [Пройти тренажёр (Live Demo)](https://shaymorgan-dev.github.io/TheFoxfordHistoryProject/)**
 
+<img width="1913" height="926" alt="2026-11-19_23-44-04" src="https://github.com/user-attachments/assets/7e51c741-92d8-48d2-a7d8-c0e8a93de27b" />
+
+
 ---
 
 ## 📖 О проекте
